@@ -1,0 +1,11 @@
+system:
+    default:
+        field_templates:
+            - { template: '@ezdesign/phonenumber_fieldtype/content_fields.html.twig', priority: 1 }
+        fielddefinition_edit_templates:
+            - { template: "@ezdesign/phonenumber_fieldtype/fielddefinition_edit.html.twig", priority: 1 }
+
+    admin_group:
+        admin_ui_forms:
+            content_edit_form_templates:
+                - { template: '@ezdesign/phonenumber_fieldtype/content_edit_form_fields.html.twig', priority: 1 }

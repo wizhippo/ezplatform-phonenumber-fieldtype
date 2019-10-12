@@ -1,0 +1,5 @@
+{% block ezphonenumber_field %}
+    {% set format = content.contentType.fieldDefinitionsByIdentifier[field.fieldDefIdentifier].fieldSettings['format'] %}
+
+    <a href="tel:{{ field.value.phoneNumber|phone_number_format('E164') }}">{{ field.value.phoneNumber|phone_number_format(format) }}</a>
+{% endblock %}

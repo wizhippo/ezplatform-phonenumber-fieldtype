@@ -1,0 +1,39 @@
+parameters:
+    ezplatform.fieldtype.phonenumber.identifier: 'ezphonenumber'
+
+services:
+    _defaults:
+        autoconfigure: true
+        autowire: true
+        public: false
+
+    Wizhippo\WizhippoPhoneNumberFieldtype\FieldType\Type:
+        autoconfigure: false
+        autowire: true
+        public: true
+        parent: ezpublish.fieldType
+        calls:
+            - [setDefaultRegion, ['$ezphonenumber_defaultregion;wizhippo$']]
+            - [setFormat, ['$ezphonenumber_format;wizhippo$']]
+        tags:
+            - { name: ezplatform.field_type, alias: '%ezplatform.fieldtype.phonenumber.identifier%' }
+
+    Wizhippo\WizhippoPhoneNumberFieldtype\FieldType\Converter\PhoneNumberConverter:
+        tags:
+            - { name: ezplatform.field_type.legacy_storage.converter, alias: '%ezplatform.fieldtype.phonenumber.identifier%' }
+
+    Wizhippo\WizhippoPhoneNumberFieldtype\FieldType\Mapper\PhoneNumberFormMapper:
+        tags:
+            - { name: ezplatform.field_type.form_mapper.definition, fieldType: '%ezplatform.fieldtype.phonenumber.identifier%' }
+            - { name: ezplatform.field_type.form_mapper.value, fieldType: '%ezplatform.fieldtype.phonenumber.identifier%' }
+
+    Wizhippo\WizhippoPhoneNumberFieldtype\FieldType\SearchField:
+        tags:
+            - { name: ezplatform.field_type.indexable, alias: '%ezplatform.fieldtype.phonenumber.identifier%' }
+
+    Wizhippo\WizhippoPhoneNumberFieldtype\Form\Type\FieldType\PhoneNumberFieldType:
+        public: true
+        arguments:
+            - "@ezpublish.api.service.field_type"
+        tags:
+            - { name: form.type }

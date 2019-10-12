@@ -1,0 +1,3 @@
+parameters:
+    wizhippo.default.ezphonenumber_defaultregion: GB
+    wizhippo.default.ezphonenumber_format: 1

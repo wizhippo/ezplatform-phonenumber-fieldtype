@@ -1,0 +1,15 @@
+{% trans_default_domain 'phonenumber_fieldtype' %}
+
+{% block ezphonenumber_field_definition_edit %}
+    <div class="ez-phonenumber-settings default-region{% if group_class is not empty %} {{ group_class }}{% endif %}">
+        {{- form_label(form.defaultRegion) -}}
+        {{- form_errors(form.defaultRegion) -}}
+        {{- form_widget(form.defaultRegion) -}}
+    </div>
+
+    <div class="ez-phonenumber-settings format{% if group_class is not empty %} {{ group_class }}{% endif %}">
+        {{- form_label(form.format) -}}
+        {{- form_errors(form.format) -}}
+        {{- form_widget(form.format) -}}
+    </div>
+{% endblock %}
